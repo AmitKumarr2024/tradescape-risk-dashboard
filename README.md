@@ -19,7 +19,7 @@ https://tradescape-risk-dashboard-seven.vercel.app
 > Add your GitHub repository URL here
 
 ```
-https://github.com/your-username/tradescape
+https://github.com/AmitKumarr2024/tradescape-risk-dashboard/tree/main
 ```
 
 ---
