@@ -202,7 +202,7 @@ The project includes reusable utility functions for:
 ## 1. Clone Repository
 
 ```bash
-git clone https://github.com/your-username/tradescape.git
+git clone https://github.com/AmitKumarr2024/tradescape-risk-dashboard.git
 ```
 
 ## 2. Install Dependencies
