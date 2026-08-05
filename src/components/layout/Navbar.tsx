@@ -39,8 +39,12 @@ export default function Navbar({
                 {/* Application branding */}
                 <div className="flex items-center gap-3">
 
-                    <div className="rounded-lg bg-indigo-600 p-2">
-                        <TrendingUp className="h-5 w-5 text-white" />
+                    <div className="flex h-11 w-11 items-center justify-center  ">
+                        <img
+                            src="/android-chrome-512x512.png"
+                            alt="Tradescape Logo"
+                            className="h-11 w-11 rounded-lg object-cover"
+                        />
                     </div>
 
                     <div>

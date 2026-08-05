@@ -6,8 +6,12 @@ export default function LoadingPage() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-center bg-slate-100 px-6 text-center dark:bg-slate-950">
             {/* Pulsing brand mark */}
-            <div className="mb-6 animate-pulse rounded-2xl bg-indigo-600 p-4 shadow-lg shadow-indigo-600/30">
-                <TrendingUp className="h-8 w-8 text-white" />
+            <div className="flex h-18 w-18 items-center justify-center  ">
+                <img
+                    src="/android-chrome-512x512.png"
+                    alt="Tradescape Logo"
+                    className="h-18 w-18 rounded-lg object-cover"
+                />
             </div>
 
             <h1 className="text-lg font-semibold text-slate-900 dark:text-white">
