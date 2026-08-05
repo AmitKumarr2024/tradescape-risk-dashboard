@@ -73,7 +73,7 @@ export default function DashboardPage() {
                         : trade
                 )
             );
-            toast.success("Trade updated successfully.");
+            
         } else {
             setTrades((prev) => [
                 ...prev,
@@ -83,7 +83,7 @@ export default function DashboardPage() {
                     ...tradeData,
                 },
             ]);
-            toast.success("Trade added successfully.");
+            
         }
 
         setEditingTrade(null);
