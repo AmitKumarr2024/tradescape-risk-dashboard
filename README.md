@@ -9,7 +9,7 @@ A modern **Trader Risk Dashboard** built with **React, TypeScript, Vite, Tailwin
 > Add your deployed Vercel URL here
 
 ```
-[https://your-project.vercel.app](https://tradescape-risk-dashboard-seven.vercel.app/)
+https://tradescape-risk-dashboard-seven.vercel.app
 ```
 
 ---
