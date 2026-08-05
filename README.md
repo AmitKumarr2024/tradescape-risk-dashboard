@@ -102,4 +102,4 @@ npm run preview
 
 **Amit Kumar**
 
-MERN Stack Developer passionate about building modern, responsive, and scalable web applications using React, TypeScript, Node.js, Express.js, and MongoDB.
+MERN Stack Developer passionate about building modern, responsive, and scalable web applications using React, Next.js, TypeScript, Node.js, Express.js, and MongoDB.
