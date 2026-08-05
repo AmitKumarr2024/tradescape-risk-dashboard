@@ -112,7 +112,7 @@ export default function EquityChart({ data }: EquityChartProps) {
 
                     <div className="flex items-center gap-2 sm:gap-3">
                         {/* Current balance badge */}
-                        <div className="flex flex-1 items-center justify-between gap-2 rounded-lg bg-gradient-to-r from-indigo-600 to-indigo-500 px-4 py-2 text-white sm:flex-none sm:block sm:text-right">
+                        <div className="flex flex-1 items-center justify-between gap-2 rounded-lg bg-linear-to-r from-indigo-600 to-indigo-500 px-4 py-2 text-white sm:flex-none sm:block sm:text-right">
                             <p className="text-xs opacity-80">Current Balance</p>
                             <h3 className="text-base font-bold sm:text-lg">
                                 {formatCurrency(currentBalance)}

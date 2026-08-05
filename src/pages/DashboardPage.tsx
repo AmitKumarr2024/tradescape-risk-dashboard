@@ -129,7 +129,7 @@ export default function DashboardPage() {
             <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
                 {/* Header */}
                 <header className="mb-6 sm:mb-8">
-                    <h1 className="bg-gradient-to-r from-indigo-600 via-indigo-500 to-sky-500 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent dark:from-indigo-400 dark:via-indigo-300 dark:to-sky-400 sm:text-3xl">
+                    <h1 className="bg-linear-to-r from-indigo-600 via-indigo-500 to-sky-500 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent dark:from-indigo-400 dark:via-indigo-300 dark:to-sky-400 sm:text-3xl">
                         Trader Risk Dashboard
                     </h1>
 
