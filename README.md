@@ -271,16 +271,3 @@ Dark Mode
 MERN Stack Developer
 
 ```
-
----
-
-### ⭐ One suggestion
-
-After deploying on **Vercel**, update these three sections before submitting:
-
-- Live Demo URL
-- GitHub Repository URL
-- Screenshots
-
-A complete README like this makes your project look more polished and easier for reviewers to evaluate.
-```
