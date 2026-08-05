@@ -269,5 +269,4 @@ Dark Mode
 **Amit Kumar**
 
 MERN Stack Developer
-
 ```
