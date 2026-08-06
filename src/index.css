@@ -49,3 +49,46 @@ body {
 *::after {
   box-sizing: border-box;
 }
+
+/* Exchange Terminal theme tokens.
+   Light values live on :root (the default). Dark values override them
+   under .dark, which Navbar already toggles on <html> via
+   document.documentElement.classList. Every component reads colors
+   through var(--x) rather than hardcoded hex, so this file is the only
+   place theme colors need to change. */
+
+:root {
+  --bg: #f4f6f8;
+  --panel: #ffffff;
+  --panel-hover: #eaeef2;
+  --border: #d7dee5;
+
+  --text: #0f1720;
+  --text-dim: #6b7785;
+  --text-mid: #47566a;
+
+  --green: #049e73;
+  --green-dim: #049e7322;
+  --red: #d9273a;
+  --red-dim: #d9273a22;
+  --amber: #b9760a;
+  --amber-dim: #b9760a22;
+}
+
+.dark {
+  --bg: #0a0d10;
+  --panel: #10151b;
+  --panel-hover: #141b22;
+  --border: #1e2731;
+
+  --text: #e6edf3;
+  --text-dim: #6b7785;
+  --text-mid: #96a3b3;
+
+  --green: #00d68f;
+  --green-dim: #00d68f22;
+  --red: #ff4d5e;
+  --red-dim: #ff4d5e22;
+  --amber: #ffb020;
+  --amber-dim: #ffb02022;
+}

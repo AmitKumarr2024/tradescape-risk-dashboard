@@ -1,9 +1,3 @@
-import {
-    CheckCircle2,
-    AlertTriangle,
-    ShieldAlert,
-} from "lucide-react";
-
 export type BadgeVariant =
     | "success"
     | "warning"
@@ -15,46 +9,39 @@ interface BadgeProps {
     variant?: BadgeVariant;
 }
 
-// Define styles and icons for each badge type
-const styles = {
-    success: {
-        container: "bg-emerald-500/15 text-emerald-400",
-        icon: <CheckCircle2 size={16} />,
-    },
-    warning: {
-        container: "bg-amber-500/15 text-amber-400",
-        icon: <AlertTriangle size={16} />,
-    },
-    danger: {
-        container: "bg-rose-500/15 text-rose-400",
-        icon: <ShieldAlert size={16} />,
-    },
-    info: {
-        container: "bg-sky-500/15 text-sky-400",
-        icon: null,
-    },
+// Status colors keyed to the terminal token set. Kept as literal hex
+// here (rather than var(--x)) since inline style values can't resolve
+// CSS custom properties inside rgba()-style opacity math reliably
+// across all consumers — swap these if the token palette changes.
+const colors: Record<BadgeVariant, string> = {
+    success: "#00d68f",
+    warning: "#ffb020",
+    danger: "#ff4d5e",
+    info: "#96a3b3",
 };
 
 export default function Badge({
     label,
     variant = "info",
 }: BadgeProps) {
-
-    // Select the appropriate badge style based on the variant
-    const badge = styles[variant];
+    const color = colors[variant];
 
     return (
-        // Reusable badge for displaying status or alerts
+        // Small mono, uppercase status pill: 1px border in the status
+        // color, background at ~13% opacity, solid dot as leading icon.
         <span
-            className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium ${badge.container}`}
+            className="inline-flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-[0.06em]"
+            style={{
+                borderColor: color,
+                backgroundColor: `${color}22`,
+                color,
+            }}
         >
-
-            {/* Display icon when available */}
-            {badge.icon}
-
-            {/* Badge label */}
+            <span
+                className="h-1.5 w-1.5 shrink-0 rounded-full"
+                style={{ backgroundColor: color }}
+            />
             {label}
-
         </span>
     );
 }

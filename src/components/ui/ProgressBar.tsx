@@ -1,5 +1,3 @@
-import clsx from "clsx";
-
 export type ProgressVariant =
     | "success"
     | "warning"
@@ -12,11 +10,11 @@ interface ProgressBarProps {
     showLabel?: boolean;
 }
 
-const colors = {
-    success: "bg-emerald-500",
-    warning: "bg-amber-500",
-    danger: "bg-rose-500",
-    info: "bg-sky-500",
+const colors: Record<ProgressVariant, string> = {
+    success: "#00d68f",
+    warning: "#ffb020",
+    danger: "#ff4d5e",
+    info: "#96a3b3",
 };
 
 export default function ProgressBar({
@@ -27,6 +25,7 @@ export default function ProgressBar({
 
     // Keep progress between 0% and 100%
     const progress = Math.min(Math.max(value, 0), 100);
+    const color = colors[variant];
 
     return (
         <div className="w-full">
@@ -34,32 +33,35 @@ export default function ProgressBar({
             {/* Progress label */}
             {showLabel && (
                 <div className="mb-2 flex items-center justify-between">
-
-                    <span className="text-sm text-slate-500 dark:text-slate-400">
+                    <span
+                        className="font-mono text-[10px] uppercase tracking-[0.08em]"
+                        style={{ color: "var(--text-dim)" }}
+                    >
                         Progress
                     </span>
 
-                    <span className="text-sm font-medium text-slate-900 dark:text-white">
+                    <span className="font-mono text-xs font-medium" style={{ color: "var(--text)" }}>
                         {progress.toFixed(0)}%
                     </span>
-
                 </div>
             )}
 
-            {/* Progress track */}
-            <div className="h-3 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
-
-                {/* Filled progress */}
+            {/* Progress track — flat, hairline border, no rounding */}
+            <div
+                className="h-3 w-full overflow-hidden border"
+                style={{ borderColor: "var(--border)", backgroundColor: "var(--bg)" }}
+            >
+                {/* Filled progress — diagonal striped fill reads as "measured"
+                    rather than decorative */}
                 <div
-                    className={clsx(
-                        "h-full rounded-full transition-all duration-500",
-                        colors[variant]
-                    )}
+                    className="h-full transition-all duration-500"
                     style={{
                         width: `${progress}%`,
+                        backgroundColor: `${color}33`,
+                        backgroundImage: `repeating-linear-gradient(90deg, ${color} 0, ${color} 2px, transparent 2px, transparent 6px)`,
+                        borderRight: `2px solid ${color}`,
                     }}
                 />
-
             </div>
 
         </div>

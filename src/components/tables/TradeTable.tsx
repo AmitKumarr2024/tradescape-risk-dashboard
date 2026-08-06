@@ -30,20 +30,23 @@ function TradeCard({
     const isProfit = trade.pnl >= 0;
 
     return (
-        <div className="flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-800/30">
+        <div
+            className="flex items-center justify-between gap-3 border p-3"
+            style={{ borderColor: "var(--border)", backgroundColor: "var(--bg)" }}
+        >
             <div className="min-w-0">
-                <p className="truncate font-medium text-slate-900 dark:text-white">
-                    {trade.asset} {trade.direction}
+                <p className="truncate font-mono text-sm font-medium" style={{ color: "var(--text)" }}>
+                    {trade.asset} {trade.direction.toUpperCase()}
                 </p>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
+                <p className="font-mono text-[10px] uppercase tracking-[0.06em]" style={{ color: "var(--text-dim)" }}>
                     {trade.createdAt}
                 </p>
             </div>
 
             <div className="flex shrink-0 items-center gap-3">
                 <span
-                    className={`font-semibold ${isProfit ? "text-emerald-500" : "text-rose-500"
-                        }`}
+                    className="font-mono font-semibold"
+                    style={{ color: isProfit ? "var(--green)" : "var(--red)" }}
                 >
                     {formatPnL(trade.pnl)}
                 </span>
@@ -52,17 +55,19 @@ function TradeCard({
                     <button
                         onClick={() => onEdit?.(trade)}
                         aria-label="Edit trade"
-                        className="rounded-lg p-2 text-slate-500 transition hover:bg-slate-200 hover:text-indigo-600 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-indigo-400"
+                        className="p-2 transition-colors duration-150 hover:bg-[var(--panel-hover)]"
+                        style={{ color: "var(--text-dim)" }}
                     >
-                        <Pencil size={16} />
+                        <Pencil size={15} />
                     </button>
 
                     <button
                         onClick={() => onDelete?.(trade.id)}
                         aria-label="Delete trade"
-                        className="rounded-lg p-2 text-slate-500 transition hover:bg-slate-200 hover:text-rose-600 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-rose-400"
+                        className="p-2 transition-colors duration-150 hover:bg-[var(--panel-hover)]"
+                        style={{ color: "var(--text-dim)" }}
                     >
-                        <Trash2 size={16} />
+                        <Trash2 size={15} />
                     </button>
                 </div>
             </div>
@@ -76,19 +81,19 @@ export default function TradeTable({ trades, onEdit, onDelete }: TradeTableProps
 
     const content = (
         <div
-            className={
-                isExpanded
-                    ? "flex h-full flex-col overflow-hidden rounded-none border-0 bg-white shadow-none dark:bg-slate-900"
-                    : "overflow-hidden rounded-xl border border-slate-200 bg-white shadow transition-colors dark:border-slate-800 dark:bg-slate-900"
-            }
+            className={isExpanded ? "flex h-full flex-col overflow-hidden" : "overflow-hidden"}
+            style={{ backgroundColor: "var(--panel)" }}
         >
             {/* Header */}
-            <div className="flex items-center justify-between gap-3 border-b border-slate-200 px-4 py-4 dark:border-slate-800 sm:px-6">
+            <div
+                className="flex items-center justify-between gap-3 border-b px-4 py-4 sm:px-6"
+                style={{ borderColor: "var(--border)" }}
+            >
                 <div>
-                    <h2 className="text-base font-semibold text-slate-900 dark:text-white sm:text-lg">
+                    <h2 className="font-mono text-base font-bold uppercase tracking-[0.04em] sm:text-lg">
                         Trade History
                     </h2>
-                    <p className="mt-1 text-xs text-slate-500 dark:text-slate-400 sm:text-sm">
+                    <p className="mt-1 text-xs sm:text-sm" style={{ color: "var(--text-dim)" }}>
                         Recent trading activity.
                     </p>
                 </div>
@@ -97,7 +102,8 @@ export default function TradeTable({ trades, onEdit, onDelete }: TradeTableProps
                 <button
                     onClick={() => setIsExpanded((prev) => !prev)}
                     aria-label={isExpanded ? "Minimize" : "Maximize"}
-                    className="shrink-0 rounded-lg border border-slate-200 p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+                    className="shrink-0 border p-2 transition-colors duration-150 hover:bg-[var(--panel-hover)]"
+                    style={{ borderColor: "var(--border)", color: "var(--text-mid)" }}
                 >
                     {isExpanded ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
                 </button>
@@ -105,7 +111,7 @@ export default function TradeTable({ trades, onEdit, onDelete }: TradeTableProps
 
             {/* Body: no trades */}
             {trades.length === 0 ? (
-                <p className="px-6 py-10 text-center text-sm text-slate-500 dark:text-slate-400">
+                <p className="px-6 py-10 text-center font-mono text-sm" style={{ color: "var(--text-dim)" }}>
                     No trades available.
                 </p>
             ) : (
@@ -131,15 +137,24 @@ export default function TradeTable({ trades, onEdit, onDelete }: TradeTableProps
                             }`}
                     >
                         <table className="min-w-full">
-                            <thead className="sticky top-0 bg-slate-100 dark:bg-slate-800/40">
-                                <tr>
-                                    <th className="px-6 py-4 text-left text-sm font-semibold text-slate-600 dark:text-slate-300">
+                            <thead className="sticky top-0" style={{ backgroundColor: "var(--panel)" }}>
+                                <tr style={{ borderBottom: "1px solid var(--border)" }}>
+                                    <th
+                                        className="px-6 py-3 text-left font-mono text-[10px] font-semibold uppercase tracking-[0.08em]"
+                                        style={{ color: "var(--text-dim)" }}
+                                    >
                                         Trade
                                     </th>
-                                    <th className="px-6 py-4 text-right text-sm font-semibold text-slate-600 dark:text-slate-300">
+                                    <th
+                                        className="px-6 py-3 text-right font-mono text-[10px] font-semibold uppercase tracking-[0.08em]"
+                                        style={{ color: "var(--text-dim)" }}
+                                    >
                                         P&amp;L
                                     </th>
-                                    <th className="px-6 py-4 text-center text-sm font-semibold text-slate-600 dark:text-slate-300">
+                                    <th
+                                        className="px-6 py-3 text-center font-mono text-[10px] font-semibold uppercase tracking-[0.08em]"
+                                        style={{ color: "var(--text-dim)" }}
+                                    >
                                         Actions
                                     </th>
                                 </tr>
@@ -149,17 +164,16 @@ export default function TradeTable({ trades, onEdit, onDelete }: TradeTableProps
                                 {trades.map((trade) => (
                                     <tr
                                         key={trade.id}
-                                        className="border-t border-slate-200 transition hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-800/30"
+                                        className="border-t transition-colors duration-150 hover:bg-[var(--panel-hover)]"
+                                        style={{ borderColor: "var(--border)" }}
                                     >
-                                        <td className="px-6 py-4 font-medium text-slate-900 dark:text-white">
-                                            {trade.asset} {trade.direction}
+                                        <td className="px-6 py-4 font-mono text-sm font-medium" style={{ color: "var(--text)" }}>
+                                            {trade.asset} {trade.direction.toUpperCase()}
                                         </td>
 
                                         <td
-                                            className={`px-6 py-4 text-right font-semibold ${trade.pnl >= 0
-                                                    ? "text-emerald-500"
-                                                    : "text-rose-500"
-                                                }`}
+                                            className="px-6 py-4 text-right font-mono text-sm font-semibold"
+                                            style={{ color: trade.pnl >= 0 ? "var(--green)" : "var(--red)" }}
                                         >
                                             {formatPnL(trade.pnl)}
                                         </td>
@@ -169,17 +183,19 @@ export default function TradeTable({ trades, onEdit, onDelete }: TradeTableProps
                                                 <button
                                                     onClick={() => onEdit?.(trade)}
                                                     aria-label="Edit trade"
-                                                    className="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-indigo-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-indigo-400"
+                                                    className="p-2 transition-colors duration-150 hover:bg-[var(--panel-hover)]"
+                                                    style={{ color: "var(--text-dim)" }}
                                                 >
-                                                    <Pencil size={18} />
+                                                    <Pencil size={16} />
                                                 </button>
 
                                                 <button
                                                     onClick={() => onDelete?.(trade.id)}
                                                     aria-label="Delete trade"
-                                                    className="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-rose-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-rose-400"
+                                                    className="p-2 transition-colors duration-150 hover:bg-[var(--panel-hover)]"
+                                                    style={{ color: "var(--text-dim)" }}
                                                 >
-                                                    <Trash2 size={18} />
+                                                    <Trash2 size={16} />
                                                 </button>
                                             </div>
                                         </td>
@@ -196,7 +212,7 @@ export default function TradeTable({ trades, onEdit, onDelete }: TradeTableProps
     // When expanded, render as a full-screen overlay instead of inline.
     if (isExpanded) {
         return (
-            <div className="fixed inset-0 z-50 bg-black/60 p-4 backdrop-blur-sm sm:p-8">
+            <div className="fixed inset-0 z-50 bg-black/70 p-4 backdrop-blur-sm sm:p-8">
                 <div className="mx-auto h-full max-w-5xl">{content}</div>
             </div>
         );

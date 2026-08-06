@@ -39,26 +39,31 @@ export default function TradeModal({
         // Full-screen overlay that closes the modal on outside click
         <div
             onClick={onClose}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
         >
 
             {/* Prevent closing when interacting with the modal content */}
             <div
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-lg rounded-xl border border-slate-200 bg-white shadow-2xl transition-all dark:border-slate-700 dark:bg-slate-900"
+                className="w-full max-w-lg border transition-all"
+                style={{ borderColor: "var(--border)", backgroundColor: "var(--panel)" }}
             >
 
                 {/* Modal header */}
-                <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4 dark:border-slate-700">
+                <div
+                    className="flex items-center justify-between border-b px-6 py-4"
+                    style={{ borderColor: "var(--border)" }}
+                >
 
-                    <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+                    <h2 className="font-mono text-base font-bold uppercase tracking-[0.06em]" style={{ color: "var(--text)" }}>
                         {title}
                     </h2>
 
                     {/* Close button */}
                     <button
                         onClick={onClose}
-                        className="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+                        className="border p-1.5 font-mono text-xs transition-colors duration-150 hover:bg-[var(--panel-hover)]"
+                        style={{ borderColor: "var(--border)", color: "var(--text-dim)" }}
                     >
                         ✕
                     </button>

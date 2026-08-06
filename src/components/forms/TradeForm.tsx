@@ -13,6 +13,10 @@ interface TradeFormProps {
     }) => void;
 }
 
+const fieldClass =
+    "w-full border bg-[var(--bg)] p-3 font-mono text-sm text-[var(--text)] outline-none transition-colors focus:border-[var(--green)]";
+const fieldStyle = { borderColor: "var(--border)" } as const;
+
 export default function TradeForm({
     trade,
     onCancel,
@@ -93,14 +97,18 @@ export default function TradeForm({
 
             {/* Select trading asset */}
             <div>
-                <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                <label
+                    className="mb-2 block font-mono text-[10px] uppercase tracking-[0.08em]"
+                    style={{ color: "var(--text-dim)" }}
+                >
                     Asset
                 </label>
 
                 <select
                     value={asset}
                     onChange={(e) => setAsset(e.target.value)}
-                    className="w-full rounded-lg border border-slate-300 bg-white p-3 text-slate-900 outline-none transition focus:border-indigo-500 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+                    className={fieldClass}
+                    style={fieldStyle}
                 >
                     <option value="BTC">BTC</option>
                     <option value="ETH">ETH</option>
@@ -110,7 +118,10 @@ export default function TradeForm({
 
             {/* Select trade direction */}
             <div>
-                <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                <label
+                    className="mb-2 block font-mono text-[10px] uppercase tracking-[0.08em]"
+                    style={{ color: "var(--text-dim)" }}
+                >
                     Direction
                 </label>
 
@@ -119,7 +130,8 @@ export default function TradeForm({
                     onChange={(e) =>
                         setDirection(e.target.value as "Long" | "Short")
                     }
-                    className="w-full rounded-lg border border-slate-300 bg-white p-3 text-slate-900 outline-none transition focus:border-indigo-500 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+                    className={fieldClass}
+                    style={fieldStyle}
                 >
                     <option value="Long">Long</option>
                     <option value="Short">Short</option>
@@ -128,7 +140,10 @@ export default function TradeForm({
 
             {/* Enter profit or loss amount */}
             <div>
-                <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                <label
+                    className="mb-2 block font-mono text-[10px] uppercase tracking-[0.08em]"
+                    style={{ color: "var(--text-dim)" }}
+                >
                     Profit / Loss
                 </label>
 
@@ -137,7 +152,8 @@ export default function TradeForm({
                     value={pnl}
                     onChange={(e) => setPnl(e.target.value)}
                     placeholder="Enter P&L"
-                    className="w-full rounded-lg border border-slate-300 bg-white p-3 text-slate-900 outline-none transition focus:border-indigo-500 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+                    className={fieldClass}
+                    style={fieldStyle}
                 />
             </div>
 
@@ -147,14 +163,20 @@ export default function TradeForm({
                 <button
                     type="button"
                     onClick={handleCancel}
-                    className="rounded-lg border border-slate-300 px-5 py-2 text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+                    className="border px-5 py-2 font-mono text-xs uppercase tracking-[0.06em] transition-colors duration-150 hover:bg-[var(--panel-hover)]"
+                    style={{ borderColor: "var(--border)", color: "var(--text-mid)" }}
                 >
                     Cancel
                 </button>
 
                 <button
                     type="submit"
-                    className="rounded-lg bg-indigo-600 px-5 py-2 font-medium text-white transition hover:bg-indigo-500"
+                    className="border px-5 py-2 font-mono text-xs font-medium uppercase tracking-[0.06em] transition-colors duration-150"
+                    style={{
+                        borderColor: "var(--green)",
+                        backgroundColor: "var(--green-dim)",
+                        color: "var(--green)",
+                    }}
                 >
                     {trade ? "Update Trade" : "Save Trade"}
                 </button>
