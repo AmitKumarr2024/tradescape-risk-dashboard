@@ -42,11 +42,11 @@ export default function Navbar({
                 {/* Application branding */}
                 <div className="flex items-center gap-3">
 
-                    <div className="flex h-11 w-11 items-center justify-center border" style={{ borderColor: "var(--border)" }}>
+                    <div className="flex h-11 w-11 items-center justify-center bg-none" style={{ borderColor: "var(--border)" }}>
                         <img
                             src="/android-chrome-512x512.png"
                             alt="Tradescape Logo"
-                            className="h-11 w-11 object-contain aspect-video"
+                            className="h-11 w-11 object-contain aspect-video rounded-xl border"
                         />
                     </div>
 

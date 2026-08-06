@@ -33,7 +33,7 @@ function SectionHeader({ label }: { label: string }) {
     return (
         <div className="mb-3 flex items-center gap-3 sm:mb-4">
             <span
-                className="whitespace-nowrap font-mono text-[11px] font-medium uppercase tracking-[0.1em]"
+                className="whitespace-nowrap font-mono text-[11px] font-medium uppercase tracking-widest[0.1em]"
                 style={{ color: "var(--text-dim)" }}
             >
                 {label}

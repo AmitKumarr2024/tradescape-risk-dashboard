@@ -10,11 +10,13 @@ interface ProgressBarProps {
     showLabel?: boolean;
 }
 
-const colors: Record<ProgressVariant, string> = {
-    success: "#00d68f",
-    warning: "#ffb020",
-    danger: "#ff4d5e",
-    info: "#96a3b3",
+// Maps each variant to a theme CSS variable rather than a literal hex
+// value, so the fill automatically flips with light/dark mode.
+const colorVar: Record<ProgressVariant, string> = {
+    success: "var(--green)",
+    warning: "var(--amber)",
+    danger: "var(--red)",
+    info: "var(--text-mid)",
 };
 
 export default function ProgressBar({
@@ -25,7 +27,7 @@ export default function ProgressBar({
 
     // Keep progress between 0% and 100%
     const progress = Math.min(Math.max(value, 0), 100);
-    const color = colors[variant];
+    const color = colorVar[variant];
 
     return (
         <div className="w-full">
@@ -57,7 +59,7 @@ export default function ProgressBar({
                     className="h-full transition-all duration-500"
                     style={{
                         width: `${progress}%`,
-                        backgroundColor: `${color}33`,
+                        backgroundColor: `color-mix(in srgb, ${color} 20%, transparent)`,
                         backgroundImage: `repeating-linear-gradient(90deg, ${color} 0, ${color} 2px, transparent 2px, transparent 6px)`,
                         borderRight: `2px solid ${color}`,
                     }}

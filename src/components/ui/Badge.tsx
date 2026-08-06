@@ -9,31 +9,31 @@ interface BadgeProps {
     variant?: BadgeVariant;
 }
 
-// Status colors keyed to the terminal token set. Kept as literal hex
-// here (rather than var(--x)) since inline style values can't resolve
-// CSS custom properties inside rgba()-style opacity math reliably
-// across all consumers — swap these if the token palette changes.
-const colors: Record<BadgeVariant, string> = {
-    success: "#00d68f",
-    warning: "#ffb020",
-    danger: "#ff4d5e",
-    info: "#96a3b3",
+// Maps each variant to a theme CSS variable rather than a literal hex
+// value, so the badge automatically flips with light/dark mode instead
+// of staying locked to whatever color was true at build time.
+const colorVar: Record<BadgeVariant, string> = {
+    success: "var(--green)",
+    warning: "var(--amber)",
+    danger: "var(--red)",
+    info: "var(--text-mid)",
 };
 
 export default function Badge({
     label,
     variant = "info",
 }: BadgeProps) {
-    const color = colors[variant];
+    const color = colorVar[variant];
 
     return (
         // Small mono, uppercase status pill: 1px border in the status
-        // color, background at ~13% opacity, solid dot as leading icon.
+        // color, background at ~15% opacity (via color-mix so it still
+        // tracks the active theme), solid dot as leading icon.
         <span
             className="inline-flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-[0.06em]"
             style={{
                 borderColor: color,
-                backgroundColor: `${color}22`,
+                backgroundColor: `color-mix(in srgb, ${color} 15%, transparent)`,
                 color,
             }}
         >

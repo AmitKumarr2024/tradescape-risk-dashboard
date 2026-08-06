@@ -55,7 +55,7 @@ function TradeCard({
                     <button
                         onClick={() => onEdit?.(trade)}
                         aria-label="Edit trade"
-                        className="p-2 transition-colors duration-150 hover:bg-[var(--panel-hover)]"
+                        className="p-2 transition-colors duration-150 hover:bg-(--panel-hover)"
                         style={{ color: "var(--text-dim)" }}
                     >
                         <Pencil size={15} />
@@ -64,7 +64,7 @@ function TradeCard({
                     <button
                         onClick={() => onDelete?.(trade.id)}
                         aria-label="Delete trade"
-                        className="p-2 transition-colors duration-150 hover:bg-[var(--panel-hover)]"
+                        className="p-2 transition-colors duration-150 hover:bg-(--panel-hover)"
                         style={{ color: "var(--text-dim)" }}
                     >
                         <Trash2 size={15} />
@@ -102,7 +102,7 @@ export default function TradeTable({ trades, onEdit, onDelete }: TradeTableProps
                 <button
                     onClick={() => setIsExpanded((prev) => !prev)}
                     aria-label={isExpanded ? "Minimize" : "Maximize"}
-                    className="shrink-0 border p-2 transition-colors duration-150 hover:bg-[var(--panel-hover)]"
+                    className="shrink-0 border p-2 transition-colors duration-150 hover:bg-(--panel-hover)"
                     style={{ borderColor: "var(--border)", color: "var(--text-mid)" }}
                 >
                     {isExpanded ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
@@ -164,7 +164,7 @@ export default function TradeTable({ trades, onEdit, onDelete }: TradeTableProps
                                 {trades.map((trade) => (
                                     <tr
                                         key={trade.id}
-                                        className="border-t transition-colors duration-150 hover:bg-[var(--panel-hover)]"
+                                        className="border-t transition-colors duration-150 hover:bg-(--panel-hover)"
                                         style={{ borderColor: "var(--border)" }}
                                     >
                                         <td className="px-6 py-4 font-mono text-sm font-medium" style={{ color: "var(--text)" }}>
@@ -183,7 +183,7 @@ export default function TradeTable({ trades, onEdit, onDelete }: TradeTableProps
                                                 <button
                                                     onClick={() => onEdit?.(trade)}
                                                     aria-label="Edit trade"
-                                                    className="p-2 transition-colors duration-150 hover:bg-[var(--panel-hover)]"
+                                                    className="p-2 transition-colors duration-150 hover:bg-(--panel-hover)"
                                                     style={{ color: "var(--text-dim)" }}
                                                 >
                                                     <Pencil size={16} />
@@ -192,7 +192,7 @@ export default function TradeTable({ trades, onEdit, onDelete }: TradeTableProps
                                                 <button
                                                     onClick={() => onDelete?.(trade.id)}
                                                     aria-label="Delete trade"
-                                                    className="p-2 transition-colors duration-150 hover:bg-[var(--panel-hover)]"
+                                                    className="p-2 transition-colors duration-150 hover:bg-(--panel-hover)"
                                                     style={{ color: "var(--text-dim)" }}
                                                 >
                                                     <Trash2 size={16} />

@@ -4,14 +4,14 @@ export default function LoadingPage() {
     return (
         <main
             className="flex min-h-screen flex-col items-center justify-center px-6 text-center"
-            style={{ backgroundColor: "#0a0d10", color: "#e6edf3" }}
+            style={{ backgroundColor: "var(--bg)", color: "var(--text)" }}
         >
             {/* Brand mark */}
-            <div className="flex h-20 w-20 items-center justify-center border" style={{ borderColor: "#1e2731" }}>
+            <div className="flex h-20 w-20 items-center justify-center border" style={{ borderColor: "var(--border)" }}>
                 <img
                     src="/android-chrome-512x512.png"
                     alt="Tradescape Logo"
-                    className="h-20 w-20 object-contain aspect-video"
+                    className="h-20 w-20 object-contain aspect-video rounded-xl border"
                 />
             </div>
 
